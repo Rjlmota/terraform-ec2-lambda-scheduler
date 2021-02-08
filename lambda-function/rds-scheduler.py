@@ -18,7 +18,7 @@ rds = boto3.client('rds')
     }
 """
 
-def startRDS(rdsid):
+def startRDS(rdsid, is_cluster):
     if is_cluster == 'true':
         try:
             rds.start_db_cluster(DBClusterIdentifier=rdsid)
@@ -35,7 +35,7 @@ def startRDS(rdsid):
         return "started:OK"
 
 
-def stopRDS(rdsid):
+def stopRDS(rdsid, is_cluster):
     if is_cluster == 'true':
         try:
             rds.stop_db_cluster(DBClusterIdentifier=rdsid)
@@ -59,7 +59,7 @@ def lambda_handler(event, context):
     is_cluster = event.get('is_cluster')
     
     if action == 'start':
-        startRDS(rdsid)
+        startRDS(rdsid, is_cluster)
     elif action == 'stop':
         stopRDS(rdsid)
         
