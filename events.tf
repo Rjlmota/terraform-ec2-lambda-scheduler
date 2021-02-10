@@ -2,6 +2,7 @@ resource "aws_cloudwatch_event_rule" "lambda_rds_scheduler_start" {
   name                = "rds-scheduler-start-${random_string.random.result}"
   description         = "Start RDS ${var.identifier} at beginning of business hours."
   schedule_expression = "cron(${var.cron_start})"
+  is_enabled          = var.enable
 }
 
 resource "aws_cloudwatch_event_target" "lambda_rds_scheduler_start" {
@@ -22,6 +23,7 @@ resource "aws_cloudwatch_event_rule" "lambda_rds_scheduler_stop" {
   name                = "rds-scheduler-stop-${random_string.random.result}"
   description         = "Stop RDS ${var.identifier} at the end of business hours."
   schedule_expression = "cron(${var.cron_stop})"
+  is_enabled          = var.enable
 }
 
 resource "aws_cloudwatch_event_target" "lambda_rds_scheduler_stop" {
