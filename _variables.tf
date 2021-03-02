@@ -10,7 +10,11 @@ variable "cron_start" {
   description = "Cron expression to define when to trigger a start of the DB"
 }
 
-variable "enable" {
+variable "enable_start" {
+  default = true
+}
+
+variable "enable_stop" {
   default = true
 }
 
