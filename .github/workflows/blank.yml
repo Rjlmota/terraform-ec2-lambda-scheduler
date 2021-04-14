@@ -56,7 +56,7 @@ jobs:
     name: Deploy on Production
     needs: build
     runs-on: ubuntu-latest
-    environment: producao
+    environment: production
     steps:
-      - name: Run on approval - Env. producao
+      - name: Deploy pkg on production
         run: echo Step approved!
