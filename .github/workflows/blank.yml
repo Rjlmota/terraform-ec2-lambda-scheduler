@@ -46,12 +46,15 @@ on:
 
 jobs:
   build:
+    name: Build pkg
     runs-on: ubuntu-latest
     steps:
       - name: Run every time
         run: echo Hello, world!
 
-  deploy_prod: 
+  deploy_prod:
+    name: Deploy on Production
+    needs: build
     runs-on: ubuntu-latest
     environment: producao
     steps:
