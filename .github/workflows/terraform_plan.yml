@@ -22,6 +22,7 @@ jobs:
   terraform_setup:  
     name: Prepare Terraform execution
     needs: aws_auth
+    runs-on: ubuntu-latest
 
     steps:
     - name: Setup Terraform
@@ -35,6 +36,7 @@ jobs:
   terraform_plan:
     name: Plan modifications
     needs: terraform_setup
+    runs-on: ubuntu-latest
 
     steps:
     - name: terraform plan
