@@ -1,3 +1,7 @@
+variable "name"{
+  default = "default-scheduler"
+}
+
 variable "identifiers" {
   description = "EC2 instance identifier for schedule"
 }

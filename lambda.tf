@@ -5,7 +5,7 @@ data "archive_file" "lambda_ec2_scheduler" {
 }
 
 resource "aws_lambda_function" "lambda_ec2_scheduler" {
-  function_name = "ec2-scheduler-${random_string.random.result}"
+  function_name = "${var.name}-ec2-scheduler-${random_string.random.result}"
   role          = aws_iam_role.lambda_ec2_scheduler.arn
   handler       = "ec2-scheduler.lambda_handler"
   filename      = data.archive_file.lambda_ec2_scheduler.output_path
