@@ -6,7 +6,7 @@ resource "random_string" "random" {
 }
 
 resource "aws_iam_role" "lambda_rds_scheduler" {
-  name = "rds-scheduler-${random_string.random.result}"
+  name = "ec2-scheduler-${random_string.random.result}"
 
   assume_role_policy = <<EOF
 {
@@ -36,9 +36,8 @@ resource "aws_iam_role_policy" "lambda_rds_scheduler" {
     {
       "Effect": "Allow",
       "Action": [
-        "rds:StopDB*",
-        "rds:StartDB*",
-        "rds:DescribeDB*"
+        "ec2:StartInstances",
+        "ec2:StopInstances"
       ],
       "Resource": [
         "*"

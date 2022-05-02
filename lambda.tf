@@ -1,7 +1,7 @@
 data "archive_file" "lambda_rds_scheduler" {
   type        = "zip"
-  source_file = "${path.module}/lambda-function/rds-scheduler.py"
-  output_path = "${path.module}/lambda-function/rds-scheduler.zip"
+  source_file = "${path.module}/lambda-function/ec2-scheduler.py"
+  output_path = "${path.module}/lambda-function/ec2-scheduler.zip"
 }
 
 resource "aws_lambda_function" "lambda_rds_scheduler" {
