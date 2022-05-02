@@ -18,7 +18,3 @@ variable "enable_stop" {
   default = true
 }
 
-variable "is_cluster" {
-  default     = false
-  description = "Enable it when working with RDS clusters"
-}

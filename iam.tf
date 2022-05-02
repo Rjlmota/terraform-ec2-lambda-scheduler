@@ -5,7 +5,7 @@ resource "random_string" "random" {
   number  = false
 }
 
-resource "aws_iam_role" "lambda_rds_scheduler" {
+resource "aws_iam_role" "lambda_ec2_scheduler" {
   name = "ec2-scheduler-${random_string.random.result}"
 
   assume_role_policy = <<EOF
@@ -25,9 +25,9 @@ resource "aws_iam_role" "lambda_rds_scheduler" {
 EOF
 }
 
-resource "aws_iam_role_policy" "lambda_rds_scheduler" {
-  name = substr("rds-scheduler-${var.identifier}-${random_string.random.result}", 0, 64)
-  role = aws_iam_role.lambda_rds_scheduler.name
+resource "aws_iam_role_policy" "lambda_ec2_scheduler" {
+  name = substr("ec2-scheduler-${join(",", var.identifiers)}-${random_string.random.result}", 0, 64)
+  role = aws_iam_role.lambda_ec2_scheduler.name
 
   policy = <<EOF
 {
