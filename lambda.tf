@@ -11,6 +11,10 @@ resource "aws_lambda_function" "lambda_ec2_scheduler" {
   filename      = data.archive_file.lambda_ec2_scheduler.output_path
   runtime       = "python3.8"
   timeout       = 15
+
+
+  tags                = {"ENVIRONMENT": ${var.name}}
+
 }
 
 resource "aws_lambda_permission" "lambda_ec2_scheduler_start" {
@@ -19,6 +23,8 @@ resource "aws_lambda_permission" "lambda_ec2_scheduler_start" {
   function_name = aws_lambda_function.lambda_ec2_scheduler.function_name
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.lambda_ec2_scheduler_start.arn
+
+  tags                = {"ENVIRONMENT": ${var.name}}
 }
 
 resource "aws_lambda_permission" "lambda_ec2_scheduler_stop" {
@@ -27,4 +33,6 @@ resource "aws_lambda_permission" "lambda_ec2_scheduler_stop" {
   function_name = aws_lambda_function.lambda_ec2_scheduler.function_name
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.lambda_ec2_scheduler_stop.arn
+
+  tags                = {"ENVIRONMENT": ${var.name}}
 }
