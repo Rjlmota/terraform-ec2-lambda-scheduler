@@ -23,8 +23,6 @@ resource "aws_lambda_permission" "lambda_ec2_scheduler_start" {
   function_name = aws_lambda_function.lambda_ec2_scheduler.function_name
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.lambda_ec2_scheduler_start.arn
-
-  tags                = {Environment = "${var.name}"}
 }
 
 resource "aws_lambda_permission" "lambda_ec2_scheduler_stop" {
@@ -34,5 +32,4 @@ resource "aws_lambda_permission" "lambda_ec2_scheduler_stop" {
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.lambda_ec2_scheduler_stop.arn
 
-  tags                = {Environment = "${var.name}"}
 }
