@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     elif operacao == "stop":
                 try:
                     ec2 = boto3.client('ec2', region_name=regiao)
-                    response = ec2.stop_instances(InstanceIds=[instancias], DryRun=False)
+                    response = ec2.stop_instances(InstanceIds=instancias, DryRun=False)
                     print(response)
                 except ClientError as e:
                     print(e)
